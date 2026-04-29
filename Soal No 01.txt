@@ -1,0 +1,16 @@
+Nama        : Mukhammad Nasyaril Ferdianto
+NIM	    : 23424005
+Mata Kuliah : Pengolahan Citra Digital
+Kelas	    : IF24A
+
+
+1. Perbedaan Distribusi Nilai Keabuan (Histogram)
+Berdasarkan hasil visualisasi histogram pada citra yang diuji, terdapat perbedaan distribusi intensitas piksel sebagai berikut:
+- Histogram Asli: Menampilkan distribusi intensitas piksel bawaan dari citra. Puncak grafik merepresentasikan dominasi tingkat kecerahan tertentu pada gambar asli.
+- Histogram Negatif: Distribusi piksel pada histogram negatif merupakan cerminan (mirroring) secara horizontal dari histogram asli. Hal ini terjadi karena rumus pemetaan G = 255 - F membalikkan nilai intensitas; piksel yang awalnya bernilai rendah (gelap) bergeser menjadi tinggi (terang), dan sebaliknya.
+- Histogram Logaritmik: Distribusi piksel mengalami pergeseran signifikan ke arah kanan (area lebih terang) dan grafiknya tampak lebih meregang. Transformasi ini memperluas rentang nilai pada area berintensitas rendah (gelap) menjadi lebih lebar, sehingga grafik tidak lagi menumpuk di sisi kiri.
+
+2. Efektivitas Transformasi Logaritmik vs Negatif
+Kedua transformasi memiliki fungsi yang berbeda tergantung pada karakteristik citra awal:
+- Transformasi Logaritmik jauh lebih efektif digunakan ketika sebuah citra memiliki rentang dinamis (dynamic range) yang sangat lebar namun detail informasinya tersembunyi atau mendominasi di area yang sangat gelap (intensitas piksel rendah). Contoh penerapannya adalah pada citra spektrum Fourier atau citra astronomi. Logaritma akan "mengangkat" kecerahan piksel gelap agar detailnya terlihat oleh mata manusia, tanpa membuat piksel yang sudah terang menjadi terlalu putih (overexposed).
+- Transformasi Negatif, di sisi lain, lebih efektif digunakan ketika informasi penting (detail objek) berwarna putih atau keabu-abuan terang, namun berada di atas latar belakang (background) yang hitam pekat atau sangat gelap. Pembalikan intensitas ini sangat lazim dan berguna pada analisis citra medis, seperti foto Rontgen tulang (X-Ray) atau mammogram, karena mata manusia lebih mudah mendeteksi detail gelap di atas latar terang.

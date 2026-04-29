@@ -1,0 +1,21 @@
+Nama        : Mukhammad Nasyaril Ferdianto
+NIM	    : 23424005
+Mata Kuliah : Pengolahan Citra Digital
+Kelas	    : IF24A
+
+
+1. Perbandingan Hasil Visual dan Nilai Piksel Rata-rata
+Berdasarkan hasil operasi konvolusi dengan tiga kernel yang berbeda, diperoleh perbandingan sebagai berikut:
+- Low Pass Filter (LPF): Secara visual, citra mengalami efek pemburaman (blurring) di mana detail-detail halus dan tekstur tajam menjadi lebih halus. Nilai rata-rata piksel hasil LPF akan sangat mendekati nilai rata-rata citra original. Hal ini karena kernel LPF bersifat averaging (penghalusan dengan membagi total penjumlahan dengan 9), sehingga tingkat kecerahan rata-rata keseluruhan citra tetap dipertahankan.
+- High Pass Filter (HPF): Secara visual, citra berubah menjadi sangat gelap (didominasi warna hitam) dan hanya menonjolkan garis-garis tepi (edge) objek berwarna terang. Nilai rata-rata pikselnya turun drastis mendekati angka 0. Hal ini terjadi karena jumlah total koefisien pada kernel HPF adalah 0 (karena 8 dikurangi delapan angka 1). Akibatnya, area piksel dengan intensitas yang seragam atau mirip akan menghasilkan perhitungan konvolusi bernilai 0 (hitam).
+- Band Pass Filter (BPF / Sharpening): Secara visual, citra tampak lebih tajam dengan batas tepi objek yang lebih kontras dan tegas dibandingkan citra original. Nilai rata-rata pikselnya relatif sama atau tidak terpaut jauh dari citra original karena total koefisien kernel BPF adalah 1 (karena 5 dikurangi empat angka 1), sehingga warna dasar citra tidak hilang.
+
+2. Hubungan Domain Spasial dan Domain Frekuensi
+Operasi filter menggunakan konvolusi kernel adalah bentuk pemrosesan dalam "Domain Spasial" (manipulasi matematis secara langsung pada nilai koordinat piksel (x,y)). Karakteristik kernel ini memiliki korelasi yang erat dengan "Domain Frekuensi" citra:
+- Frekuensi Rendah pada citra merepresentasikan area di mana perubahan intensitas piksel terjadi secara perlahan (misalnya area warna seragam atau gradasi halus).
+- Frekuensi Tinggi merepresentasikan area dengan perubahan intensitas piksel yang mendadak atau drastis (misalnya batas tepi objek/edge atau noise).
+
+Hubungan dari ketiga jenis filter tersebut adalah:
+- Filter LPF bekerja di domain spasial dengan meloloskan komponen frekuensi rendah dan meredam frekuensi tinggi. Akibatnya, noise dan detail tajam hilang (blur).
+- Filter HPF memblokir atau menahan frekuensi rendah (area seragam dihitamkan) dan hanya meloloskan frekuensi tinggi. Akibat di domain spasialnya adalah hanya tepi objek yang terdeteksi.
+- Filter BPF (dalam konteks penajaman ini) bekerja dengan mempertahankan informasi dasar frekuensi rendah, namun secara bersamaan memberikan penguatan (boosting) pada komponen frekuensi tinggi. Hasil akhirnya di domain spasial adalah citra asal yang detail tepinya menjadi lebih dipertegas.
